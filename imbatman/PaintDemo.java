@@ -52,5 +52,5 @@ public void changeBorderSize(int size)
 
 public class PaintDemo
 {
-
+//теперь пишем тут
 }
