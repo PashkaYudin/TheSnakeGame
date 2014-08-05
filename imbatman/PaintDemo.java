@@ -24,6 +24,32 @@ class PaintPanel extends JPanel
       
         rand = new Random();
     }
+    protected void paintComponent(Graphics g)
+{
+    super.paintComponent(g);
+    
+    for (int i = 0; i < 15; i++)
+    {
+      for (int j = 0; j < 10; j++)
+       {
+          if (m[i][j])
+          {     
+              g.setColor(Color.green);
+              g.fillRect(j*20, i*20, 20, 20);
+              g.setColor(Color.black);
+              g.drawRect(j*20, i*20, 20, 20);
+          } 
+       }
+    }
+      
+}
+public void changeBorderSize(int size) 
+{
+    setBorder(BorderFactory.createLineBorder(Color.CYAN, size));
+    
+}           
+
+
 public class PaintDemo
 {
 
