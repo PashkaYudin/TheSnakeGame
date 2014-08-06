@@ -52,5 +52,34 @@ public void changeBorderSize(int size)
 
 public class PaintDemo
 {
-//теперь пишем тут
+      
+    JMenuBar jMenuBar1 = new JMenuBar();
+   
+    JMenu jMenu1 = new JMenu("Начать");
+    JMenuItem jMenuItem1 = new JMenuItem("Новая");
+    JMenuItem jMenuItem2 = new JMenuItem("Отмена");
+    
+    
+    JLabel jlab; 
+    PaintPanel pp = new PaintPanel(200, 300); 
+    int index;
+    boolean status = false;
+    boolean statusGame = false;
+    public long start;
+    public Timer swTimer;
+}
+    
+    ActionListener timerAL = new ActionListener()
+    {
+        public void actionPerformed(ActionEvent ae)
+        {
+            updateTime();
+        }
+    }
+
+    boolean big;
+
+PaintDemo()
+{
+    
 }
