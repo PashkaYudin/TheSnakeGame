@@ -81,5 +81,11 @@ public class PaintDemo
 
 PaintDemo()
 {
-    
+            JFrame jfrm = new JFrame("Змейка");
+        jfrm.getContentPane().setLayout(new FlowLayout());
+        jfrm.setSize(240, 400);
+        jfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jlab = new JLabel("Статус игры");
+        
+
 }
