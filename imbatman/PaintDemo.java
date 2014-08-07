@@ -88,6 +88,11 @@ PaintDemo()
         jlab = new JLabel("Статус игры");
         
         
+                     jMenuItem1.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent ae)
+            {
+  
                         swTimer = new Timer(500, timerAL); 
                 jlab.setText("Змейка поползла=)"); 
                
@@ -107,6 +112,13 @@ PaintDemo()
                 pp.zmei[0] = 1;
                 pp.zmei[1] = 2;
                 pp.zmei[2] = 3;
+                pp.napravlenie = "vniz";
+                status = true;
+                statusGame =true;
+               
+                swTimer.start(); 
+            }
+        });
 
 
 }
