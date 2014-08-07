@@ -87,5 +87,26 @@ PaintDemo()
         jfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jlab = new JLabel("Статус игры");
         
+        
+                        swTimer = new Timer(500, timerAL); 
+                jlab.setText("Змейка поползла=)"); 
+               
+                for (int i = 0; i < 15; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        pp.m[i][j] = false;
+                    }
+                }
+                for (int i = 0; i < 100; i++)
+                { pp.zmei[i] = -1;}
+                pp.m[0][3] = true;
+                pp.m[0][4] = true;
+                pp.m[0][5] = true;
+                pp.dlina = 3;
+                pp.zmei[0] = 1;
+                pp.zmei[1] = 2;
+                pp.zmei[2] = 3;
+
 
 }
