@@ -148,6 +148,20 @@ PaintDemo()
             }   
             }
         });
+jMenuBar1.setLocation(0, 0);
+        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMenuItem2);
+        jMenuBar1.add(jMenu1);
+        jfrm.getContentPane().add(jlab);
+        jfrm.getContentPane().add(jMenuBar1);
+        jfrm.getContentPane().add(pp);
+        jfrm.setVisible(true);
+        
+        
+    }
 
-
+void updateTime()
+{
+ //логика движения попозже сделаем, пока лень...   
 }
+
