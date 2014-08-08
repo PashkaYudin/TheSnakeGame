@@ -119,6 +119,35 @@ PaintDemo()
                 swTimer.start(); 
             }
         });
+        jMenuItem2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae)
+            {
+                swTimer.stop();
+                statusGame = false;
+                if (!big) pp.changeBorderSize(5);
+                else pp.changeBorderSize(1);
+                big = !big;
+            }
+        });
+        jfrm.addKeyListener(new KeyAdapter() 
+        {
+
+            public void keyReleased(KeyEvent e) 
+            {
+
+                if (statusGame){
+                if (40 == e.getKeyCode() && !"vverh".equals(pp.napravlenie))
+                { pp.napravlenie = "vniz"; }
+                if (37 == e.getKeyCode()&& !"vpravo".equals(pp.napravlenie))
+                { pp.napravlenie = "vlevo"; }
+                if (39 == e.getKeyCode()&& !"vlevo".equals(pp.napravlenie))
+                { pp.napravlenie = "vpravo"; }
+                if (38 == e.getKeyCode() && !"vniz".equals(pp.napravlenie))
+                { pp.napravlenie = "vverh"; }
+             pp.repaint();   
+            }   
+            }
+        });
 
 
 }
