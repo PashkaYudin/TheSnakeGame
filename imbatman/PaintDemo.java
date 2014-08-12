@@ -161,7 +161,143 @@ jMenuBar1.setLocation(0, 0);
     }
 
 void updateTime()
-{
- //логика движения попозже сделаем, пока лень...   
+{   
+    boolean en = false, hh = false;
+    
+    if (status)
+    {  
+        if ("vniz".equals(pp.napravlenie)) 
+        {
+           
+            for (int i = 10; i >= 0; i-- )
+            {
+                pp.zmei[i+1] = pp.zmei[i];
+            }
+            pp.zmei[0] += 10;
+            if (pp.m[pp.zmei[0]/10][pp.zmei[0]%10]) hh =true;
+            if (pp.zmei[0]/10 == 15) en = true;
+        }
+        
+        if ("vverh".equals(pp.napravlenie)) {
+           
+            for (int i = 10; i >= 0; i-- )
+            {
+                pp.zmei[i+1] = pp.zmei[i];
+            }
+            pp.zmei[0] -= 10;
+            if (pp.zmei[0]/10 < 0) {en = true;}
+           
+            try {
+            if (pp.m[pp.zmei[0]/10][pp.zmei[0]%10]) hh =true;}
+            catch (java.lang.ArrayIndexOutOfBoundsException ex)
+            {
+                jlab.setText("ВЫ ПРОИГРАЛИ");
+            }
+            
+        } 
+        
+        if ("vlevo".equals(pp.napravlenie)) {
+           
+            for (int i = 10; i >= 0; i-- )
+            {
+                pp.zmei[i+1] = pp.zmei[i];
+            }
+            pp.zmei[0] -= 1; 
+            if (pp.m[pp.zmei[0]/10][pp.zmei[0]%10]) hh =true;
+            if (pp.zmei[0]%10 == 9) en = true;
+        } 
+     
+        if ("vpravo".equals(pp.napravlenie)) {
+           
+            for (int i = 10; i >= 0; i-- )
+            {
+                pp.zmei[i+1] = pp.zmei[i];
+            }
+            pp.zmei[0] += 1;
+            if (pp.m[pp.zmei[0]/10][pp.zmei[0]%10]) hh =true;
+            if (pp.zmei[0]%10 == 0) en = true;
+        } 
+        
+        for (int i = 0; i < 10; i++ )
+            {
+                
+                if (pp.zmei[i]== -1 && !hh) pp.zmei[i-1] = -1;
+                
+            }
+        
+          for (int i = 0; i < 15; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        pp.m[i][j] = false;
+                    }
+                }
+          
+          if (hh) { 
+              Random rand = new Random();
+              index = rand.nextInt(149); 
+             
+              pp.dlina++;
+           
+              if (pp.dlina == 10) 
+              {
+                  
+                 for (int i = 0; i < 15; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        pp.m[i][j] = false;
+                    }
+                }
+                for (int i = 0; i < 100; i++)
+                { pp.zmei[i] = -1;}
+                pp.m[0][3] = true;
+                pp.m[0][4] = true;
+                pp.m[0][5] = true;
+                pp.dlina = 3;
+                index = 18;
+                pp.zmei[0] = 3;
+                pp.zmei[1] = 4;
+                pp.zmei[2] = 5;
+                for (int i = 0; i < 10; i++)
+                {
+                   pp.m[15][i] = true; 
+                }
+                pp.napravlenie = "vniz";
+                status = true;
+                statusGame =true;
+                int g = swTimer.getDelay();
+                swTimer.setDelay(g-50);
+              }
+          }
+          pp.m[index/10][index%10] = true; 
+                for (int i = 0; i < 15; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        for (int k = 0; k < 10; k++){
+                        if ((i*10+j) == pp.zmei[k])
+                        {pp.m[i][j] = true;}}
+                    }
+                }
+    if (!en) pp.repaint();    
+    }
+  
+    if (en) {swTimer.stop(); statusGame = false; status = false; jlab.setText("ВЫ ПРОИГРАЛИ");
+    } 
+    
 }
+
+    
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
+                new PaintDemo();
+            }
+        });
+       
+    }
+}
+
 
